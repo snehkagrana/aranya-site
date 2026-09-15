@@ -70,12 +70,13 @@ p{margin:0 0 1em}
 .header-inner{position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;height:var(--header);width:min(1320px,100% - 2*var(--gutter));margin-inline:auto}
 /* The conch PNG carries ~10px of transparent margin, so a small gap still reads as ~14px. */
 .brand{display:inline-flex;align-items:center;gap:4px;color:var(--ink);text-decoration:none;flex:none}
-.brand-symbol img{width:42px;height:42px;transition:transform 1.2s var(--ease)}
+/* The PNG's transparent margin is a quarter of its width; pull it back so the shell itself sits on the column edge. */
+.brand-symbol img{--conch:42px;width:var(--conch);height:var(--conch);max-width:none;margin-left:calc(var(--conch) * -.25);transition:transform 1.2s var(--ease)}
 .brand:hover .brand-symbol img{transform:rotate(-8deg)}
 .brand-name{font:500 1.5rem/1 var(--serif);white-space:nowrap}
 .brand-dot{color:var(--brass)}
-/* Centred under the name; the left padding balances the letter-spacing trailing the last letter. */
-.brand-name small{display:block;margin-top:5px;padding-left:.24em;font:600 9.5px/1 var(--sans);letter-spacing:.24em;text-align:center;text-transform:uppercase;color:var(--muted)}
+/* Tracked out to the exact width of the name, so both lines share left and right edges. The negative right margin cancels the spacing after the last letter. */
+.brand-name small{display:block;margin-top:5px;margin-right:-.325em;font:600 9.5px/1 var(--sans);letter-spacing:.325em;text-align:center;text-transform:uppercase;color:var(--muted)}
 .primary-nav{display:flex;align-items:center;gap:4px}
 .nav-link{position:relative;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:0;border-radius:999px;background:none;color:var(--ink);font:500 14.5px/1 var(--sans);text-decoration:none;cursor:pointer;transition:background .5s var(--ease)}
 .nav-link:hover,.nav-link[aria-expanded="true"]{background:rgba(47,74,60,.07)}
@@ -540,7 +541,7 @@ main:not(:has(>.invitation:last-child)){padding-bottom:clamp(64px,9vw,150px)}
 @media (max-width:420px){
   .brand-name{font-size:1.3rem}
   .brand-name small{display:none}
-  .brand-symbol img{width:36px;height:36px}
+  .brand-symbol img{--conch:36px}
   .path-tiles{gap:28px 14px}
   .path-more{font-size:12.5px}
   .mini-card{grid-template-columns:76px minmax(0,1fr)}
