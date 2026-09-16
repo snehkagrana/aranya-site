@@ -172,29 +172,6 @@ p{margin:0 0 1em}
 .hero-lede{max-width:600px;margin:24px auto 0;font-size:clamp(1.05rem,1.4vw,1.2rem);color:var(--muted)}
 .hero .hero-lede{color:#3f5046}
 .hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:34px}
-.breathe{position:absolute;left:0;right:0;bottom:clamp(18px,3.8vh,40px);z-index:3;display:flex;flex-direction:column;align-items:center;gap:14px;width:max-content;margin-inline:auto;color:var(--forest);text-decoration:none;animation:rise 1.6s var(--ease-out) 1.3s both}
-/* One breath is 14s: in 4s, hold 4s, out 6s. Ring segments and stage words share that rhythm. */
-.breathe-orb{position:relative;display:grid;place-items:center;width:74px;height:74px}
-.breathe-orb svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;transform:rotate(-90deg)}
-.breathe-track{fill:none;stroke:rgba(47,74,60,.28);stroke-width:1.2;stroke-linecap:round;stroke-dasharray:26.07 2.5 26.07 2.5 40.36 2.5;stroke-dashoffset:-1.25;transition:stroke .8s var(--ease)}
-.breathe:hover .breathe-track{stroke:rgba(154,123,63,.6)}
-.breathe-halo,.breathe-core{grid-area:1/1;border-radius:50%;animation:breath 14s infinite}
-.breathe-halo{width:58px;height:58px;background:radial-gradient(closest-side,rgba(143,168,140,.55),rgba(143,168,140,0));animation:breath 14s infinite,halo 14s ease-in-out infinite}
-.breathe-core{width:32px;height:32px;background:radial-gradient(circle at 38% 34%,#fbf7ee 0,#d9e2d1 42%,#8ea78e 100%);box-shadow:0 8px 20px -8px rgba(47,74,60,.6)}
-.breathe-dot{position:absolute;inset:0;animation:orbit 14s linear infinite}
-.breathe-dot::before{content:"";position:absolute;left:50%;top:-.5px;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:var(--brass);box-shadow:0 0 0 4px rgba(154,123,63,.16)}
-@keyframes breath{0%{transform:scale(.56);animation-timing-function:cubic-bezier(.37,0,.63,1)}28.57%{transform:scale(1)}57.14%{transform:scale(1);animation-timing-function:cubic-bezier(.37,0,.63,1)}100%{transform:scale(.56)}}
-@keyframes halo{0%,24%{opacity:.7}36%,50%{opacity:1}62%,100%{opacity:.7}}
-@keyframes orbit{to{transform:rotate(1turn)}}
-.breathe-stages{display:flex;align-items:center;gap:10px;font:600 10.5px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;white-space:nowrap}
-.breathe-stages i{width:14px;height:1px;background:currentColor;opacity:.3}
-.breathe-stages span{opacity:.36;animation:14s infinite}
-.breathe-stages span:nth-of-type(1){animation-name:stage-in}
-.breathe-stages span:nth-of-type(2){animation-name:stage-hold}
-.breathe-stages span:nth-of-type(3){animation-name:stage-out}
-@keyframes stage-in{0%,26%{opacity:1}31%,95%{opacity:.36}100%{opacity:1}}
-@keyframes stage-hold{0%,26%{opacity:.36}31%,54.5%{opacity:1}59.5%,100%{opacity:.36}}
-@keyframes stage-out{0%,54.5%{opacity:.36}59.5%,95%{opacity:1}100%{opacity:.36}}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
 /* ---- Reveals --------------------------------------------------------------------------------- */
@@ -505,9 +482,6 @@ main:not(:has(>.invitation:last-child)){padding-bottom:clamp(64px,9vw,150px)}
   .detail-image{aspect-ratio:4/3.4;border-radius:180px 180px 24px 24px}
 }
 @media (max-width:720px){
-  .breathe-orb{width:64px;height:64px}
-  .breathe-halo{width:50px;height:50px}
-  .breathe-core{width:28px;height:28px}
   body{font-size:16px}
   .hero-landscape{bottom:-2vh;height:74%}
   .hero-content{padding-top:calc(var(--header) + 46px)}
@@ -554,9 +528,7 @@ main:not(:has(>.invitation:last-child)){padding-bottom:clamp(64px,9vw,150px)}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
   .leaves-layer,.hero-mist{display:none}
-  .cloud-band,.sky-glow,.breathe-halo,.breathe-core,.now-status-light::after{animation:none!important}
-  .breathe-dot{display:none}
-  .breathe-stages span{animation:none!important;opacity:1}
+  .cloud-band,.sky-glow,.now-status-light::after{animation:none!important}
   html.js [data-reveal]{opacity:1;transform:none}
   ::view-transition-old(root),::view-transition-new(root){animation:none}
 }
